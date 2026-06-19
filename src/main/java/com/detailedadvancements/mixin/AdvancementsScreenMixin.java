@@ -21,19 +21,12 @@ public class AdvancementsScreenMixin {
     @Nullable
     private AdvancementTab selectedTab;
 
-    // leftPos/topPos: 화면 내 도전과제 창 위치
+    // AdvancementsScreen에 직접 선언된 필드 (Screen 상속 필드 아님)
     @Shadow
     private int leftPos;
 
     @Shadow
     private int topPos;
-
-    // Screen 클래스에서 상속된 화면 크기
-    @Shadow
-    public int width;
-
-    @Shadow
-    public int height;
 
     @Inject(method = "extractRenderState", at = @At("TAIL"))
     private void onExtractRenderState(GuiGraphicsExtractor extractor, int mouseX, int mouseY, float delta, CallbackInfo ci) {
@@ -61,17 +54,17 @@ public class AdvancementsScreenMixin {
         if (progress == null) return;
 
         extractor.nextStratum();
+        // Screen.width/height 대신 extractor.guiWidth/Height() 사용 (Lunar Client 호환)
         DetailTooltipRenderer.render(
                 extractor,
                 advancementNode.holder(),
                 progress,
                 mouseX, mouseY,
-                this.width, this.height
+                extractor.guiWidth(), extractor.guiHeight()
         );
     }
 
     private AdvancementWidget findHoveredWidget(AdvancementTabAccessor tabAccessor, int mouseX, int mouseY) {
-        // 내용 영역 시작: leftPos + WINDOW_INSIDE_X(9), topPos + WINDOW_INSIDE_Y(18)
         // WINDOW_INSIDE_X = 9, WINDOW_INSIDE_Y = 18 (도전과제 창 내부 콘텐츠 영역 오프셋)
         int contentX = leftPos + 9;
         int contentY = topPos + 18;
