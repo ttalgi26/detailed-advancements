@@ -53,7 +53,6 @@ public class AdvancementsScreenMixin {
         // progress가 아직 설정되지 않은 경우
         if (progress == null) return;
 
-        extractor.nextStratum();
         // Screen.width/height 대신 extractor.guiWidth/Height() 사용 (Lunar Client 호환)
         DetailTooltipRenderer.render(
                 extractor,
