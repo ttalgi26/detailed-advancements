@@ -3,6 +3,7 @@ package com.detailedadvancements.mixin;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.client.gui.screens.advancements.AdvancementTab;
 import net.minecraft.client.gui.screens.advancements.AdvancementWidget;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
@@ -18,4 +19,8 @@ public interface AdvancementTabAccessor {
 
     @Accessor("scrollY")
     double getScrollY();
+
+    @Accessor("hovered")
+    @Nullable
+    AdvancementWidget getHovered();
 }

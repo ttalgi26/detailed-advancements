@@ -1,5 +1,7 @@
 package com.detailedadvancements.mixin;
 
+import net.minecraft.advancements.AdvancementNode;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.client.gui.screens.advancements.AdvancementWidget;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
@@ -11,4 +13,10 @@ public interface AdvancementWidgetAccessor {
 
     @Accessor("y")
     int getY();
+
+    @Accessor("advancementNode")
+    AdvancementNode getAdvancementNode();
+
+    @Accessor("progress")
+    AdvancementProgress getProgress();
 }
