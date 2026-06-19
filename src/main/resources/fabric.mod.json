@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "detailedadvancements",
+  "version": "${version}",
+  "name": "Detailed Advancements",
+  "description": "도전과제에 커서를 올리면 남은 달성 조건과 진행도를 상세하게 보여줍니다.",
+  "authors": [
+    "ttalgi26"
+  ],
+  "contact": {
+    "sources": "https://github.com/ttalgi26/detailed-advancements"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.detailedadvancements.DetailedAdvancementsMod"
+    ]
+  },
+  "mixins": [
+    "detailedadvancements.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~26.2",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
